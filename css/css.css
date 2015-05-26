@@ -1,0 +1,22 @@
+
+.pure-form-aligned {
+    width: 400px;
+}
+
+.pure-control-group {
+    margin: 5px;
+}
+
+input {
+    width: 100%;
+    margin: 0;
+}
+
+div {
+    
+}
+
+.pure-controls {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
