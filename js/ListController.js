@@ -2,12 +2,14 @@ var ListController = {
 	
 	init: function() {
 		ListController.setForm();
+		ListController.listContacts();
 	},
 	
 	setForm: function() {
 		var form = document.querySelector('form');
 		form.addEventListener('submit', function(event) {
 			ListController.addContact(form);
+			ListController.clearForm(form);
 			event.preventDefault();
 		});
 	},
@@ -21,12 +23,20 @@ var ListController = {
 		ListController.addContactToHTML(contact);
 	},
 	
+	clearForm: function(form) {
+		form.reset();
+	},
+	
 	listContacts: function() {
-		
+		var contacts = ContactListService.getList();
+		contacts.forEach(function(contact) {
+			ListController.addContactToHTML(contact);
+		});
 	},
 	
 	addContactToHTML: function(contact) {
-		var section = document.getElementById('guestList'),
+		var
+			section = document.getElementById('guestList'),
 			dl = document.createElement('dl'),
 			dt = ListController.createDT(contact),
 			ddName = ListController.createDD(contact.name, 'name'),
@@ -42,7 +52,7 @@ var ListController = {
 	createImage: function(contact) {
 		var img = document.createElement('img');
 		
-		img.src = "http://www.gravatar.com/avatar/aab95d5689ea7c531ea98e9669f87948";
+		img.src = "images/profile.svg";
 		
 		return img;
 	},
